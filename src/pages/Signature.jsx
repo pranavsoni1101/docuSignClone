@@ -6,6 +6,7 @@ import { Box, Button, Container, FormLabel, Heading, Image, Input, InputGroup } 
 const Signature= () => {
   const signatureRef = useRef(null);
   const [signatures, setSignatures] = useState([]);
+  const [fileName, setFileName] = useState("");
 
   const handleFileChange = (event) => {
     const file = event.target.files[0];
@@ -40,7 +41,7 @@ const Signature= () => {
     const signatureBlob = await fetch(signatureDataUrl).then(res => res.blob()); // Convert data URL to Blob
 
     const formData = new FormData();
-    formData.append('signature', signatureBlob);
+    formData.append('signature', signatureBlob, fileName);
 
     try {
       await axios.post('http://localhost:3000/signature/upload', formData, {
@@ -68,6 +69,10 @@ const Signature= () => {
       console.error('Error deleting Signature:', error);
     }
   };
+
+  const handleChange = (event) => {
+    setFileName(event.target.value);
+  }
   return (
     <>
         <Heading
@@ -103,6 +108,12 @@ const Signature= () => {
             >
                 <SignatureCanvas ref={signatureRef} />
             </Box>
+            <Input 
+                type='text'
+                onChange={handleChange}
+                value = {fileName}
+                placeholder='Type in file name'
+            />
                 <Button 
                     mt = "1em"
                     colorScheme='green'
