@@ -8,6 +8,7 @@ import { createBrowserRouter } from 'react-router-dom';
 import Docs from './pages/Docs';
 import UpdatePdf from './pages/UpdatePdf';
 import PdfUpload from './pages/PdfUpload';
+import Signature from './pages/Signature';
 
 const router = createBrowserRouter([
     {
@@ -29,7 +30,11 @@ const router = createBrowserRouter([
     {
       path: '/pdfupload',
       element: <PdfUpload />
-    } 
+    },
+    {
+      path: '/signature',
+      element: <Signature />
+    }  
   ])
 
 const rootElement = document.getElementById('root')
