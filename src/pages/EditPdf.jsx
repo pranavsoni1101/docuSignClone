@@ -1,4 +1,4 @@
-import { Heading, Box, Button, Text, Flex } from '@chakra-ui/react';
+import { Heading, Box, Button, Text, Flex, Grid, GridItem } from '@chakra-ui/react';
 import { Page, Document } from 'react-pdf';
 import axios from 'axios';
 import React, { useState } from 'react';
@@ -6,7 +6,7 @@ import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import 'react-pdf/dist/Page/AnnotationLayer.css';
 import 'react-pdf/dist/Page/TextLayer.css';
-// import Sidebar from '../components/Sidebar';
+import Sidebar from '../components/Sidebar';
 
 const EditPdf = () => {
     let { id } = useParams();
@@ -43,15 +43,21 @@ const EditPdf = () => {
 
     return(
         <>
-            {/* <Sidebar /> */}
+            {/* <Grid>
+                <GridItem>
+
+                </GridItem>
+                <GridItem></GridItem>
+            </Grid> */}
+            <Sidebar>
             <Heading>This is edit pdf</Heading>
             <Box
                 bg = "grey"
                 maxH={"4em"}
             >
-                <Button display={"inline-block"} onClick={goToPreviousPage}>Prev</Button>
+                {/* <Button display={"inline-block"} onClick={goToPreviousPage}>Prev</Button> */}
                 <Text display={"inline-block"}>{pageNumber} of {numPages}</Text>
-                <Button display={"inline-block"}     onClick={goToNextPage}>Next</Button>
+                {/* <Button display={"inline-block"}     onClick={goToNextPage}>Next</Button> */}
 
             </Box>
             <Flex
@@ -75,6 +81,7 @@ const EditPdf = () => {
                     ))}
                 </Document>
             </Flex>
+            </Sidebar>
         </>
     )
 }
