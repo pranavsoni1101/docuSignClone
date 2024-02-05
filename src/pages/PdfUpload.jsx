@@ -1,4 +1,4 @@
-import { Box, Button, Heading, Input, Text } from '@chakra-ui/react';
+import { Box, Button, Heading, Input, Link, Text } from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react';
 import { Document, Page } from 'react-pdf';
 import axios from 'axios';
@@ -92,6 +92,13 @@ const PdfUpload = () => {
                     onClick={() => handleDeletePdf(pdf._id)}
                 >
                     Delete
+                </Button>
+                <Button
+                    as = {Link}
+                    href={`/pdfUpload/${pdf._id}`}
+                    colorScheme='blue'
+                >
+                    Edit pdf
                 </Button>
                 </div>
             ))}

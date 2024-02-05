@@ -9,6 +9,7 @@ import Docs from './pages/Docs';
 import UpdatePdf from './pages/UpdatePdf';
 import PdfUpload from './pages/PdfUpload';
 import Signature from './pages/Signature';
+import EditPdf from './pages/EditPdf';
 
 const router = createBrowserRouter([
     {
@@ -30,6 +31,10 @@ const router = createBrowserRouter([
     {
       path: '/pdfupload',
       element: <PdfUpload />
+    },
+    {
+      path: 'pdfUpload/:id',
+      element: <EditPdf />
     },
     {
       path: '/signature',
